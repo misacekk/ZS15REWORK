@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>15. základní škola Plzeň</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>/* --- 1. Základní styly a reset --- */
+        :root {
+            --primary-blue: #97d4e5; /* Světlejší modrá, barva pozadí a nav. lišt */
+            --secondary-blue: #5b9dbd; /* Tmavší modrá, např. pro text */
+            --accent-green: #598335; /* Zelená barva pro Ekoškola */
+            --text-color: #333;
+            --font-serif: 'Georgia', serif; /* Působí tradičněji */
+            --font-sans: 'Arial', sans-serif;
+        }
+        
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        
+        body {
+            font-family: var(--font-sans);
+            color: var(--text-color);
+            line-height: 1.6;
+            background-color: #f0f8ff; /* Velmi světle modrá, téměř bílá */
+        }
+        
+        /* --- 2. Hlavička a navigace --- */
+        .header-banner {
+            background-color: #fff; /* Hlavička je bílá */
+            /* Zde by se nastavoval background-image pro ilustraci (květiny) */
+            padding: 20px 0;
+            text-align: center;
+            border-bottom: 5px solid var(--primary-blue);
+        }
+        
+        .main-nav {
+            background-color: var(--primary-blue);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 5%;
+        }
+        
+        .main-nav ul {
+            list-style: none;
+            display: flex;
+        }
+        
+        .main-nav li a {
+            color: var(--text-color);
+            text-decoration: none;
+            padding: 8px 15px;
+            display: block;
+            font-weight: bold;
+        }
+        
+        .search-box {
+            background-color: #fff;
+            padding: 5px 10px;
+            border-radius: 5px;
+        }
+        
+        /* --- 3. Hlavní obsah a sekce s boxy --- */
+        main {
+            padding: 20px 5%;
+            max-width: 1200px; /* Omezí šířku obsahu */
+            margin: 0 auto;
+        }
+        
+        .intro-section {
+            display: flex;
+            gap: 30px;
+            margin-bottom: 40px;
+        }
+        
+        .intro-section img { /* Pro obrázek budovy */
+            max-width: 300px;
+            height: auto;
+            border: 5px solid var(--primary-blue);
+        }
+        
+        .info-boxes {
+            display: grid;
+            /* Rozložení na 4 sloupce */
+            grid-template-columns: repeat(4, 1fr); 
+            gap: 15px;
+            margin-bottom: 40px;
+        }
+        
+        .box {
+            background-color: #e6f7ff; /* Světlá barva pozadí boxů */
+            padding: 20px;
+            text-align: center;
+            border-radius: 5px;
+            border: 1px solid var(--primary-blue);
+            min-height: 150px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            font-size: 1.1em;
+            font-weight: bold;
+        }
+        
+        .light-blue-bg {
+            background-color: var(--primary-blue);
+            padding: 15px 0;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        
+        .dark-blue-bg {
+            background-color: var(--secondary-blue);
+            color: white;
+            padding: 30px;
+            text-align: center;
+            margin-bottom: 40px;
+        }
+        
+        /* --- 4. Responzivní design pro mobily --- */
+        @media (max-width: 768px) {
+            .main-nav ul {
+                flex-direction: column;
+                display: none; /* Skryje menu a čeká na hamburger ikonu */
+            }
+        
+            .info-boxes {
+                /* Na mobilu se boxy srovnají pod sebe (2 sloupce) */
+                grid-template-columns: repeat(2, 1fr); 
+            }
+        }</style>
+    </head>
+<body>
+    <header class="header-banner">
+        <div class="header-content">
+            <h1>15. ZÁKLADNÍ ŠKOLA PLZEŇ</h1>
+            </div>
+    </header>
+
+    <nav class="main-nav">
+        <ul>
+            <li><a href="#">Úvod</a></li>
+            <li><a href="#">Informace</a></li>
+            <li><a href="#">Kontakty</a></li>
+        </ul>
+        <div class="search-box">Hledat</div>
+    </nav>
+    
+    <main>
+        <section class="intro-section">
+            <h2>15. základní škola Plzeň</h2>
+            </section>
+
+        <section class="info-boxes">
+            <div class="box online-skola">ŠKOLA ONLINE [Obrázek]</div>
+            <div class="box istravne">iStravné [Obrázek]</div>
+            <div class="box kde-najdeme">Kde nás najdete [Obrázek]</div>
+            <div class="box aktuality">AKTUÁLNÍ INFORMACE [Obrázek]</div>
+        </section>
+
+        <section class="aktualni-zpravodajstvi">
+            <h3>Aktuální zpravodajství</h3>
+            </section>
+
+        <nav class="bottom-nav light-blue-bg">
+            </nav>
+        
+        <section class="virtualni-prohlidka dark-blue-bg">
+            <h3>VIRTUÁLNÍ PROHLÍDKA ŠKOLY</h3>
+            </section>
+        
+    </main>
+    
+    <footer class="footer">
+        </footer>
+</body>
+</html>

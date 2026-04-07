@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Provozní řád jídelny | 15. základní škola Plzeň</title>
+    
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    
+    <style>
+        /* DEFINICE BAREV DLE HLAVNÍ STRÁNKY */
+        :root {
+            --primary-blue: #2c3e50;
+            --light-blue: #A9E5FF; 
+            --accent-blue: #3498db;
+            --text-dark: #353434;
+            --footer-border: #6c757d;
+            --school-orange: #ff7f00;
+        }
+
+        body {
+            font-family: 'Segoe UI', Arial, sans-serif;
+            margin: 0;
+            color: var(--text-dark);
+            background-color: #f8f9fa;
+            /* Zajištění, aby dlouhá slova (emaily) nepřetékala */
+            word-wrap: break-word;
+            overflow-wrap: break-word;
+        }
+
+        /* HLAVIČKA */
+        header {
+            background-color: var(--light-blue);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            position: relative;
+            z-index: 1000;
+        }
+
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+            flex-wrap: wrap;
+        }
+
+        .nav-logo-img {
+            max-height: 85px !important; 
+            width: auto;
+            transition: transform 0.2s;
+        }
+
+        nav {
+            display: flex;
+            align-items: center;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: var(--text-dark) !important;
+            font-weight: bold;
+            margin: 0 15px;
+            transition: color 0.3s;
+        }
+
+        nav a:hover { 
+            color: var(--accent-blue) !important; 
+        }
+
+        /* DROPDOWN MENU */
+        .dropdown-oskole {
+            position: relative;
+            display: inline-block;
+        }
+
+        .dropdown-menu-custom {
+            display: none;
+            position: absolute;
+            left: 0; 
+            background-color: #ffffff;
+            min-width: 280px; 
+            box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+            padding: 0;
+            z-index: 1000;
+            border-radius: 4px;
+            overflow: hidden;
+            border-top: none; 
+            border-left: 1px solid #eee;
+            border-right: 1px solid #eee;
+            border-bottom: 1px solid #eee;
+        }
+
+        .dropdown-oskole:hover .dropdown-menu-custom {
+            display: block;
+        }
+
+        .menu-polozka-seznam {
+            display: block;
+            padding: 12px 20px;
+            text-decoration: none !important;
+            color: #333 !important;
+            font-weight: 400;
+            font-size: 0.95rem;
+            transition: all 0.2s ease;
+            margin: 0 !important;
+            border-bottom: 1px solid #f2f2f2;
+            text-align: left;
+        }
+
+        .menu-polozka-seznam:hover {
+            background-color: #fcfcfc;
+            color: var(--school-orange) !important;
+            padding-left: 25px;
+        }
+
+        /* OBSAH STRÁNKY (STŘED) */
+        .my-container {
+            max-width: 1000px;
+            margin: 30px auto;
+            padding: 40px;
+            background: white;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            border-radius: 12px;
+        }
+
+        h2 { color: var(--primary-blue); border-bottom: 2px solid var(--light-blue); padding-bottom: 10px; margin-bottom: 25px; }
+        h3 { color: var(--accent-blue); font-size: 1.3rem; margin-top: 30px; font-weight: bold; }
+        
+        .contact-box {
+            background: #f1f9ff;
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 30px;
+            border-left: 5px solid var(--accent-blue);
+        }
+
+        .price-table {
+            width: 100%;
+            margin: 20px 0;
+            border-collapse: collapse;
+        }
+
+        .price-table th { background: var(--primary-blue); color: white; padding: 10px; }
+        .price-table td { padding: 10px; border: 1px solid #dee2e6; }
+
+        .section-number {
+            color: var(--school-orange);
+            font-weight: bold;
+            margin-right: 10px;
+        }
+
+        /* PATIČKA */
+        footer {
+            background: var(--primary-blue);
+            color: white;
+            padding: 40px 0 20px 0; 
+            margin-top: 40px;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px; 
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        @media (max-width: 992px) {
+            .header-container { flex-direction: column; text-align: center; gap: 15px; }
+            nav { flex-wrap: wrap; justify-content: center; }
+            .dropdown-menu-custom { position: relative; min-width: 100%; box-shadow: none; }
+            .my-container { margin: 10px; padding: 20px; }
+            .price-table { font-size: 0.85rem; } /* Zmenšení tabulky na mobilech */
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <div class="header-container">
+        <a href="#">
+            <img src="./Zahlavi2.png" alt="15. ZŠ Plzeň" class="nav-logo-img">
+        </a>
+        
+        <nav>
+            <a href="Untitled-1.html">Informace</a>
+            <a href="#">Dokumenty</a>
+            <a href="#">Jídelna</a>
+            <a href="#">Družina</a>
+            <a href="#">Kontakty</a>
+            
+            <div class="dropdown-oskole">
+                <a href="#">O škole <i class="bi bi-chevron-down"></i></a>
+                <div class="dropdown-menu-custom shadow">
+                    <a href="#" class="menu-polozka-seznam">Školní poradenské pracoviště</a>
+                    <a href="#" class="menu-polozka-seznam">Důležité termíny</a>
+                    <a href="#" class="menu-polozka-seznam">Výuka</a>
+                    <a href="#" class="menu-polozka-seznam">Tiskopisy pro rodiče</a>
+                    <a href="#" class="menu-polozka-seznam">OP Křimice</a>
+                    <a href="#" class="menu-polozka-seznam">EKOškola</a>
+                    <a href="#" class="menu-polozka-seznam">Zájmová činnost</a>
+                    <a href="#" class="menu-polozka-seznam">Soutěže</a>
+                    <a href="#" class="menu-polozka-seznam">Fotogalerie</a>
+                </div>
+            </div>
+        </nav>
+
+        <form class="d-flex" role="search">
+            <input class="form-control form-control-sm me-2" type="search" placeholder="Hledat..." aria-label="Hledat">
+        </form>
+    </div>
+</header>
+
+<main class="my-container">
+    <h2>Provozní řád školní jídelny</h2>
+
+    <div class="contact-box">
+        <div class="row">
+            <div class="col-md-6 mb-3 mb-md-0">
+                <strong>Adresa školy:</strong><br>
+                15. základní škola Plzeň<br>
+                Terezie Brzkové 33-35, 318 00 Plzeň<br>
+                <strong>Telefon:</strong> 378 027 398<br>
+                <strong>Fax:</strong> 377 380 260<br>
+                <strong>E-mail:</strong> <a href="mailto:tlustaso@zs15.plzen-edu.cz">tlustaso@zs15.plzen-edu.cz</a>
+            </div>
+            <div class="col-md-6 text-md-end">
+                <strong>Vedoucí ŠJ:</strong> Šustková Zdeňka<br>
+                <strong>Vedoucí kuchař:</strong> Mokoš Václav<br>
+            </div>
+        </div>
+    </div>
+
+    <section>
+        <h3><span class="section-number">1)</span> Zásady provozu</h3>
+        <p>Provoz ŠJ se řídí Vyhláškou č. 107/2005Sb., ve znění pozdějších předpisů a hygienickými předpisy. Jídelníček je sestavován na základě zásad zdravé výživy a dodržování spotřebního koše vybraných potravin. Jídla podávaná v rámci školního stravování konzumují strávníci v provozovnách školního stravování. Základní vyhlášky a předpisy jsou k dispozici v kanceláři školní jídelny. Strávník má nárok na oběd jen pokud má na svém kontě obnos, který plně pokryje cenu oběda. Nesnědené jídlo strávník musí vrátit společně s použitým nádobím na určené místo.</p>
+    </section>
+    
+    <section>
+        <h3><span class="section-number">2)</span> Pracovní doba</h3>
+        <ul>
+            <li><strong>Pracovní doba:</strong> 6:00 - 14:30 hod</li>
+            <li><strong>Výdejní doba pro děti a zaměstnance:</strong> 11:45 - 14:00 hod</li>
+            <li><strong>Výdejní doba pro cizí strávníky (jídlonosiče) a pro žáky 1. den nemoci:</strong> 10:45 - 11:15 hod</li>
+        </ul>
+        <p>Poznámka: Je zakázán odběr do skleněných nádob, vstup do jídelny je dovolen pouze stravujícím se žákům a s pedagogickým dozorem.</p>
+    </section>
+    
+    <section>
+        <h3><span class="section-number">3)</span> Výše stravného</h3>
+        <div class="table-responsive">
+            <p>Výše úhrady stanoví vedoucí ŠJ, která je povinna se řídit výživovými a finančními normami, které jsou uvedeny ve Vyhlášce č. 107/Sb § 5, ods.1,2. Strávníci jsou zařazeni do kategorií podle věku, kterého ve školním roce dosáhli. Podle věku strávníka jsou upraveny i výživové a finanční normy.</p>
+            <table class="price-table">
+                <thead>
+                    <tr>
+                        <th>Kategorie</th>
+                        <th>Cena oběda</th>
+                        <th>Cena bez dotace</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>7 - 10 let</td>
+                        <td>38,00 Kč</td>
+                        <td>87,00 Kč</td>
+                    </tr>
+                    <tr>
+                        <td>11 - 14 let</td>
+                        <td>40,00 Kč</td>
+                        <td>89,00 Kč</td>
+                    </tr>
+                    <tr>
+                        <td>15 - 18 let</td>
+                        <td>42,00 Kč</td>
+                        <td>91,00 Kč</td>
+                    </tr>
+                    <tr>
+                        <td>Cizí strávníci</td>
+                        <td>99,00 Kč</td>
+                        <td>-</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </section>
+    
+    <section>
+        <h3><span class="section-number">4)</span> Platba stravného</h3>
+        <p>Placení se provádí:</p>
+        <ul>
+            <li>svolení k inkasu číslo účtu 4838580297/0100 (neuvádějte variabilní symbol)</li>
+            <li>převodem z běžného účtu – číslo účtu ŠJ 4838580297/0100 (nutný variabilní symbol)</li>
+            <li>pokladní složenkou KB - číslo účtu ŠJ 4838580297/0100</li>
+        </ul>
+        <p>Variabilní symbol je evidenční číslo strávníka, které určí vedoucí ŠJ. Provozní doba KB je ve všední dny od 8,00 hodin do 17,00 hodin. Provádění plateb je uvedeno v příloze.</p>
+    </section>
+    
+    <section>
+        <h3><span class="section-number">5)</span> Přihlášky ke stravování</h3>
+        <p>Přihlášku ke stravování si strávníci vyzvednou u vedoucí ŠJ. Lze použít i formulář v příloze.</p>
+    </section>
+    
+    <section>
+        <h3><span class="section-number">6)</span> Odhlášky ze stravování</h3>
+        <p>Odhlášky ze stravování se přijímají nejpozději do 8,00 hodin osobně nebo telefonicky na čísle – 378 027 359. První den neplánované nepřítomnosti strávníka ve škole se pro účely této vyhlášky považuje za pobyt ve škole. Další dny je nutno obědy odhlásit nebo odebírat po domluvě s vedoucí ŠJ jako cizí strávník za celkovou cenu oběda (bez dotace), tj. za cenu pro „cizí strávníky“. Neodhlášený a neodebraný oběd je strávníkovi účtován.</p>
+    </section>
+    
+    <section>
+        <h3><span class="section-number">7)</span> Bezkontaktní žeton</h3>
+        <p>Obdrží strávník v kanceláři za úhradu 121,- při přihlášení ke stravě a zaplacení stravného. Jeho ztrátu je ve vlastním zájmu povinen okamžitě ohlásit v kanceláři.</p>
+    </section>
+    
+    <section>
+        <h3><span class="section-number">8)</span> Stav konta</h3>
+        <p>Každý strávník může zjistit: osobně - v kanceláři ŠJ (v pracovní dny od 7,30 hodin do 13,30 hodin), telefonicky – 378 027 359, nebo na <a href="http://www.strava.cz" target="_blank">www.strava.cz</a>.</p>
+    </section>
+    
+    <section>
+        <h3><span class="section-number">9)</span> Vyúčtování na konci školního roku</h3>
+        <p>Bude provedeno u každého strávníka na základě jeho pokynů s těmito možnostmi: a) nechat na kontě zůstatek pro příští školní rok, b) převést zůstatek na vlastní konto, c) převést zůstatek na konto sourozence, d) vyzvednutí zůstatku v hotovosti v dohodnutém termínu. Informace k ukončení školního roku a vyúčtování přeplatků a pokyn pro manipulaci s finančním obnosem jsou k dispozici v přílohách.</p>
+    </section>
+    
+    <section>
+        <h3><span class="section-number">10)</span> Doba prázdnin a volno</h3>
+        <p>V těchto dnech jídelna až na výjimky nevaří a každý strávník je automaticky odhlášen. O těchto termínech budou strávníci s předstihem informováni na webových stránkách, na nástěnkách ve školní jídelně a u kanceláře vedoucí ŠJ.</p>
+    </section>
+    
+    <section>
+        <h3><span class="section-number">11)</span> Jídelní lístek</h3>
+        <p>Je vyvěšen v jídelnách, u vchodu do ŠJ, u kanceláře vedoucí ŠJ a na webových stránkách <a href="http://www.strava.cz" target="_blank">www.strava.cz</a>.</p>
+    </section>
+    
+    <section>
+        <h3><span class="section-number">12)</span> Dotazy, připomínky</h3>
+        <p>Dotazy, připomínky, případné problémy řešte ihned přímo v kanceláři s vedoucí ŠJ.</p>
+    </section>
+    
+    <section>
+        <h3><span class="section-number">13)</span> Zákazy a omezení</h3>
+        <p>Odnášení nádobí a zbytků jídel ze školní jídelny je zakázáno. Dodatek č. 1 k Provoznímu řádu školní jídelny 15. ZŠ o konzumaci vlastního jídla v prostorách školní jídelny je k nahlédnutí ZDE.</p>
+    </section>
+
+    <div class="mt-5 p-3 bg-light rounded text-center">
+        <p class="mb-0 text-muted">Zpracovala: Burešová Zlata | Mgr. Soňa Pavelková, ředitelka školy</p>
+    </div>
+</main>
+
+<footer>
+    <div class="footer-grid">
+        <div>
+            <h5 class="mb-3 text-uppercase" style="letter-spacing: 1px;">Vedení školy</h5>
+            <p><i class="bi bi-envelope-fill me-2"></i> pavelkovaso@zs15.plzen-edu.cz</p>
+            <p><i class="bi bi-telephone-fill me-2"></i> +420 378 027 351</p>
+        </div>
+
+        <div class="text-center">
+            <img src="./logo_pilsen.png" alt="Plzeň" style="max-height: 60px;">
+            <p class="mt-3 small opacity-75">
+                2026 © 15. ZŠ Plzeň | Design by SITMP
+            </p>
+        </div>
+
+        <div class="text-md-end">
+            <h5 class="mb-3 text-uppercase" style="letter-spacing: 1px;">Sekretariát</h5>
+            <p>koudelovami@zs15.plzen-edu.cz <i class="bi bi-envelope-fill ms-2"></i></p>
+            <p>+420 378 027 362 <i class="bi bi-telephone-fill ms-2"></i></p>
+        </div>
+    </div>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
